@@ -12,14 +12,14 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async register(email: string, password: string): Promise<User> {
+  async register(name: string, password: string): Promise<User> {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = this.userRepository.create({ email, password: hashedPassword });
+    const user = this.userRepository.create({ name, password: hashedPassword });
     return this.userRepository.save(user);
   }
 
-  async validateUser(email: string, password: string): Promise<User | null> {
-    const user = await this.userRepository.findOne({ where: { email } });
+  async validateUser(name: string, password: string): Promise<User | null> {
+    const user = await this.userRepository.findOne({ where: { name } });
     if (user && (await bcrypt.compare(password, user.password))) {
       return user;
     }

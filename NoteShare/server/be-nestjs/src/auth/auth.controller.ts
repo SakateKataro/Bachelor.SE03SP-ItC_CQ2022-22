@@ -7,14 +7,14 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('register')
-  async register(@Body() body: { email: string; password: string }) {
-    const user = await this.authService.register(body.email, body.password);
-    return { id: user.id, email: user.email };
+  async register(@Body() body: { name: string; password: string }) {
+    const user = await this.authService.register(body.name, body.password);
+    return { id: user.id, name: user.name };
   }
 
   @Post('login')
-  async login(@Body() body: { email: string; password: string }) {
-    const user = await this.authService.validateUser(body.email, body.password);
+  async login(@Body() body: { name: string; password: string }) {
+    const user = await this.authService.validateUser(body.name, body.password);
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
