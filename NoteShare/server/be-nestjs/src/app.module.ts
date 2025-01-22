@@ -12,8 +12,8 @@ import { NotesModule } from './notes/notes.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'll25062004',
-      database: 'lab2',
+      password: '123456',
+      database: 'postgres',
       autoLoadEntities: true,
       synchronize: true, // Không nên bật ở môi trường production
     }),
