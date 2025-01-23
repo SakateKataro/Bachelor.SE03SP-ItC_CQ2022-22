@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getNotes } from "../services/apiService";
+import { getNotes } from "../../services/apiService";
 
 const NotesList = ({ onSelectNote }) => {
   const [notes, setNotes] = useState([]);

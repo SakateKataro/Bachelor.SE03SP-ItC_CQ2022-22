@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import AuthForm from "./components/AuthForm";
-import NotesList from "./components/NotesList";
-import NoteEditor from "./components/NoteEditor";
+import AuthForm from "./components/UserAuthentication/AuthForm";
+import NotesList from "./components/Dashboard/NotesList";
+import NoteEditor from "./components/Dashboard/NoteEditor";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(

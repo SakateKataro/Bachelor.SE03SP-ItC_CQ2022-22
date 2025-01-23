@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { createNote } from "../services/apiService";
-import { encryptNote } from "../utils/crypto";
+import { createNote } from "../../services/apiService";
+import { encryptNote } from "../../utils/crypto";
 
 const NoteEditor = ({ onSave }) => {
   const [note, setNote] = useState("");
