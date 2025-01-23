@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Share } from './entities/share.entity';
@@ -14,10 +14,7 @@ export class ShareService {
   ) {}
 
   async create(noteId: number, userId: number, expiresIn: number): Promise<string> {
-    const note = await this.notesService.findByUser(userId);
-    if (!note) {
-      throw new Error('Note not found or not accessible');
-    }
+    const note = await this.notesService.findById(noteId, userId);
 
     const token = this.jwtService.sign(
       { noteId, userId },
@@ -41,12 +38,12 @@ export class ShareService {
       const share = await this.shareRepository.findOne({ where: { token } });
 
       if (!share || new Date() > share.expiresAt) {
-        throw new Error('Invalid or expired share link');
+        throw new NotFoundException('Invalid or expired share link');
       }
 
       return payload;
     } catch (error) {
-      throw new Error('Invalid or expired token');
+      throw new NotFoundException('Invalid or expired token');
     }
   }
 }
