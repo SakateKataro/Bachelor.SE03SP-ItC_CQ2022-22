@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:3001/api", // URL backend NestJS
+  baseURL: "http://localhost:3001/", // URL backend NestJS
 });
 
 // Đăng ký người dùng

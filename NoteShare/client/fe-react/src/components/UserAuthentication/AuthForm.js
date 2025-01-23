@@ -3,7 +3,7 @@ import { register, login } from "../../services/apiService";
 
 const AuthForm = ({ onAuthSuccess }) => {
   const [isLogin, setIsLogin] = useState(true);
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ name: "", password: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,11 +23,11 @@ const AuthForm = ({ onAuthSuccess }) => {
       <h2>{isLogin ? "Login" : "Register"}</h2>
       <form onSubmit={handleSubmit}>
         <input
-          type="email"
-          placeholder="Email"
-          value={formData.email}
+          type="text"
+          placeholder="Username"
+          value={formData.name}
           onChange={(e) =>
-            setFormData({ ...formData, email: e.target.value })
+            setFormData({ ...formData, name: e.target.value })
           }
           required
         />
